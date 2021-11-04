@@ -1,0 +1,181 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "echo",
+      "type": "shell",
+      "command": "echo ${input:variables}"
+    },
+    {
+      "label": "编译活动文件",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-g",
+        "-fexec-charset=GBK",
+        "${file}",
+        "-o",
+        "${fileDirname}\\${fileBasenameNoExtension}.exe"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "编译",
+      "command": "g++",
+      "options": {
+        "cwd": "${workspaceFolder}\\src"
+      },
+      "type": "shell",
+      "args": [
+        "-g",
+        "CNF.cpp",
+        "SATSolverDPLL.cpp",
+        "test.cpp",
+        "-o",
+        "${workspaceFolder}\\bin\\Debug"
+      ],
+      "problemMatcher": [
+        "$gcc"
+      ]
+    },
+    {
+      "label": "编译（no debug）",
+      "command": "g++",
+      "options": {
+        "cwd": "${workspaceFolder}\\src"
+      },
+      "type": "shell",
+      "args": [
+        "CNF.cpp",
+        "SATSolverDPLL.cpp",
+        "test.cpp",
+        "-o",
+        "${workspaceFolder}\\bin\\SATSolverDPLL"
+      ],
+      "problemMatcher": [
+        "$gcc"
+      ]
+    },
+    {
+      "label": "编译 sudoku（no debug）",
+      "command": "g++",
+      "options": {
+        "cwd": "${workspaceFolder}\\src"
+      },
+      "type": "shell",
+      "args": [
+        "CNF.cpp",
+        "SATSolverDPLL.cpp",
+        "Sudoku.cpp",
+        "testSudoku.cpp",
+        "-o",
+        "${workspaceFolder}\\bin\\Sudoku.exe"
+      ],
+      "problemMatcher": [
+        "$gcc"
+      ]
+    },
+    {
+      "label": "编译 sudoku",
+      "command": "g++",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "type": "shell",
+      "args": [
+        "-g",
+        "src\\CNF.cpp",
+        "src\\SATSolverDPLL.cpp",
+        "src\\Sudoku.cpp",
+        "src\\testSudoku.cpp",
+        "-o",
+        "${workspaceFolder}\\bin\\SudokuDebug.exe"
+      ],
+      "problemMatcher": [
+        "$gcc"
+      ]
+    },
+    {
+      "label": "运算",
+      "type": "process",
+      "command": "SATSolverDPLL.exe",
+      "options": {
+        "cwd": "${workspaceFolder}\\bin"
+      },
+      "args": [
+        "../data/judgeNE/8_1.cnf",
+        "../out/outfile.res"
+      ]
+    },
+    {
+      "label": "Sudoku Demo",
+      "type": "process",
+      "command": "bin/Sudoku.exe",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "args": []
+    },
+    {
+      "label": "检验",
+      "command": "verify.exe",
+      "args": [
+        "../res/SAT测试备选算例/基准算例/性能测试/ais10.cnf",
+        "../out/outfile.res"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}\\bin"
+      }
+    },
+    {
+      "label": "高级检验",
+      "command": "verify5000.exe",
+      "args": [
+        "../data/judgeNE/11（unsatisfied）.cnf",
+        "../out/outfile.res"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}\\bin"
+      }
+    },
+    {
+      "type": "cppbuild",
+      "label": "C/C++: cpp.exe 生成活动文件",
+      "command": "E:\\Developer\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\cpp.exe",
+      "args": [
+        "-g",
+        "${file}",
+        "-o",
+        "${fileDirname}\\${fileBasenameNoExtension}.exe"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "编译器: E:\\Developer\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\cpp.exe"
+    }
+  ],
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "variables",
+      "description": "vscode tasks 变量名 / launch 变量名",
+      "default": "${workspaceFolder}"
+    },
+  ]
+}

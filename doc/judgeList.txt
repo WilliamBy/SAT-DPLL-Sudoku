@@ -1,0 +1,17 @@
+1.cnf - 84s
+2.cnf - 19s
+3.cnf - 153s
+4（unsatisified）.cnf - 540s
+5.cnf - 0.065s
+6.cnf - ???
+7_1.cnf - 0.09s
+7（unsatisfied）.cnf - ???
+8（unsatisfied）.cnf - ???
+8_1.cnf -10.642s
+9（unsatisfied）.cnf - ???
+10.cnf - ???
+11（unsatisfied）.cnf - 234s // REVIEW - exception
+12.cnf - ???
+
+sud00009.cnf - 18.805s
+ais10.cnf - 256.21s
